@@ -27,6 +27,7 @@ namespace TabulateFunction
             label1.Text = "X0";
             label2.Text = "XN";        
             label3.Text = "HX";
+            label5.Text = "Минимальное значение функции = ";
 
             groupBox1.Text = "Действие";
 
@@ -38,6 +39,8 @@ namespace TabulateFunction
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            maximum = false;
+            average = false;
             label5.Text = "Минимальное значение функции = ";
             minimum = true;
             tmp = label5.Text;
@@ -45,6 +48,8 @@ namespace TabulateFunction
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            maximum = false;
+            minimum = false;
             label5.Text = "Среднее арифм. значение функции = ";
             average = true;
             tmp = label5.Text;
@@ -52,6 +57,8 @@ namespace TabulateFunction
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            minimum = false;
+            average = false;
             label5.Text = "Максимальное значение функции = ";
             maximum = true;
             tmp = label5.Text;
@@ -61,13 +68,19 @@ namespace TabulateFunction
         {
             label5.Text = tmp;
 
-            Solution solution;
+            if ((textBox1.Text != "") & (textBox2.Text != "") & (textBox3.Text != ""))
+            {
+                X0 = Convert.ToDouble(textBox1.Text);
+                XN = Convert.ToDouble(textBox2.Text);
+                HX = Convert.ToDouble(textBox3.Text);
 
-            X0 = Convert.ToDouble(textBox1.Text);
-            XN = Convert.ToDouble(textBox2.Text);
-            HX = Convert.ToDouble(textBox3.Text);
-
-            label5.Text += solution.Calculate(X0, XN, HX, minimum, maximum, average);
+                Solution solution = new Solution();
+                label5.Text += solution.Calculate(X0, XN, HX, minimum, maximum, average);
+            }
+            else
+            {
+                MessageBox.Show("Ошибка. Введите диапазон значений X.");
+            }
         }
     }
 }

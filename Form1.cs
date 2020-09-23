@@ -28,6 +28,9 @@ namespace TabulateFunction
             label2.Text = "XN";        
             label3.Text = "HX";
             label5.Text = "Минимальное значение функции = ";
+            tmp = label5.Text;
+            minimum = true;
+
 
             groupBox1.Text = "Действие";
 

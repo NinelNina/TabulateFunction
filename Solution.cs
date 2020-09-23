@@ -19,7 +19,7 @@ namespace TabulateFunction
 
             if (minimum)
             {
-                for (double i = X0; i < XN; i += HX)
+                for (double i = X0; i <= XN; i += HX)
                 {
                     if (Function(i) < yMin)
                     {
@@ -31,7 +31,7 @@ namespace TabulateFunction
             }
             else if (maximum)
             {
-                for (double i = X0; i < XN; i += HX)
+                for (double i = X0; i <= XN; i += HX)
                 {
                     if (Function(i) > yMax)
                     {
@@ -44,7 +44,7 @@ namespace TabulateFunction
             else
             {
                 
-                for (double i = X0; i < XN; i += HX) 
+                for (double i = X0; i <= XN; i += HX) 
                 { 
                     sum += Function(i);
                 }
